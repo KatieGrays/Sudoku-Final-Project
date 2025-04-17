@@ -1,6 +1,6 @@
 # Katie Gray
 
-import math,random
+import math,random, pygame, sys
 
 """
 This was adapted from a GeeksforGeeks article "Program for Sudoku Generator" by Aarti_Rathi and Ankur Trisal
@@ -213,3 +213,37 @@ def generate_sudoku(size, removed):
     sudoku.remove_cells()
     board = sudoku.get_board()
     return board
+
+
+
+# TEMPORARY
+# Initialize Pygame
+pygame.init()
+
+# Set the window dimensions
+window_width = 600
+window_height = 600
+
+# Create the window
+screen = pygame.display.set_mode((window_width, window_height))
+
+# Set the window title
+pygame.display.set_caption("Pygame Window")
+
+# Main game loop
+running = True
+while running:
+    # Handle events
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            running = False
+
+    # Fill the screen with a color (e.g., white)
+    screen.fill((255, 255, 255))
+
+    # Update the display
+    pygame.display.update()
+
+# Quit Pygame
+pygame.quit()
+sys.exit()
