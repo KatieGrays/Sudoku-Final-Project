@@ -4,16 +4,29 @@ import pygame, sys
 
 class Board:
 
-    def __init__(self, w, h, scr, diff):
-        self.w = w
-        self.h = h
-        self.scr = scr
-        self.diff = diff
+    def __init__(self, width, height, screen, difficulty):
+        self.width = width
+        self.height = height
+        self.screen = screen
+        self.difficulty = difficulty
     #     Constructor for the Board class.
     #     screen is a window from PyGame.
     #     difficulty is a variable to indicate if the user chose easy medium, or hard.
     #
-    # def draw(self)
+    def draw(self):
+        for i in range(1, 3):
+            pygame.draw.line(self.screen, "black",(0, (self.height // 3) * i),
+                             (self.width, (self.height // 3) * i), 3)
+            pygame.draw.line(self.screen, "black",((self.width // 3) * i, 0),
+                             ((self.width // 3) * i, self.height), 3)
+        for i in range(1, 9):
+            if i == 3 or i == 6:
+                continue
+            pygame.draw.line(self.screen, "black", (0, (self.height // 9) * i),
+                         (self.width, (self.height // 9) * i), 1)
+            pygame.draw.line(self.screen, "black", ((self.width // 9) * i, 0),
+                             ((self.width // 9) * i, self.height), 1)
+
     #     Draws an outline of the Sudoku grid, with bold lines to delineate the 3x3 boxes.
     #     Draws every cell on this board.
     #
@@ -57,6 +70,7 @@ class Board:
     # def check_board(self)
     # Check whether the Sudoku board is solved correctly.
 
+
 # Initialize Pygame
 pygame.init()
 
@@ -66,6 +80,9 @@ window_height = 600
 
 # Create the window
 screen = pygame.display.set_mode((window_width, window_height))
+
+# Initialize Board
+board = Board(600, 600, screen, "easy")
 
 # Set the window title
 pygame.display.set_caption("Pygame Window")
@@ -80,6 +97,9 @@ while running:
 
     # Fill the screen with a color (e.g., white)
     screen.fill((255, 255, 255))
+
+    # Draw lines
+    board.draw()
 
     # Update the display
     pygame.display.update()
