@@ -1,3 +1,5 @@
+# Katie Gray
+
 import math,random
 
 """
@@ -23,6 +25,8 @@ class SudokuGenerator:
 	None
     '''
     def __init__(self, row_length, removed_cells):
+	self.row_length = 9
+        self.removed_cells = removed_cells
         pass
 
     '''
